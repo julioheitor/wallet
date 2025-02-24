@@ -1,4 +1,4 @@
-package com.chalenge.wallet.domain;
+package com.challenge.wallet.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

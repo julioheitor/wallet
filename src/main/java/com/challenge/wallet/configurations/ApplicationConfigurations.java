@@ -1,4 +1,4 @@
-package com.chalenge.wallet.configurations;
+package com.challenge.wallet.configurations;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

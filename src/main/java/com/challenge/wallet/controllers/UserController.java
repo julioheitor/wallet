@@ -1,9 +1,8 @@
-package com.chalenge.wallet.controllers;
+package com.challenge.wallet.controllers;
 
-import com.chalenge.wallet.domain.User;
-import com.chalenge.wallet.dtos.UserDTO;
-import com.chalenge.wallet.dtos.WalletDTO;
-import com.chalenge.wallet.services.UserService;
+import com.challenge.wallet.domain.User;
+import com.challenge.wallet.dtos.UserDTO;
+import com.challenge.wallet.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,8 +1,7 @@
-package com.chalenge.wallet.services;
+package com.challenge.wallet.services;
 
-import com.chalenge.wallet.domain.Balance;
-import com.chalenge.wallet.domain.Wallet;
-import org.springframework.data.jpa.repository.Query;
+import com.challenge.wallet.domain.Balance;
+import com.challenge.wallet.domain.Wallet;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

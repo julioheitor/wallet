@@ -1,6 +1,6 @@
-package com.chalenge.wallet.repositories;
+package com.challenge.wallet.repositories;
 
-import com.chalenge.wallet.domain.Wallet;
+import com.challenge.wallet.domain.Wallet;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

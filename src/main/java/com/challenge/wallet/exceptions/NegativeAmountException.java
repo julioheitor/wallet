@@ -1,4 +1,4 @@
-package com.chalenge.wallet.exceptions;
+package com.challenge.wallet.exceptions;
 
 public class NegativeAmountException extends Exception {
 }

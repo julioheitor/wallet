@@ -1,14 +1,14 @@
-package com.chalenge.wallet.services.impl;
+package com.challenge.wallet.services.impl;
 
-import com.chalenge.wallet.domain.Balance;
-import com.chalenge.wallet.domain.User;
-import com.chalenge.wallet.domain.Wallet;
-import com.chalenge.wallet.exceptions.NegativeAmountException;
-import com.chalenge.wallet.exceptions.NotEnoughFundsException;
-import com.chalenge.wallet.repositories.WalletRepository;
-import com.chalenge.wallet.services.BalanceService;
-import com.chalenge.wallet.services.UserService;
-import com.chalenge.wallet.services.WalletService;
+import com.challenge.wallet.domain.Balance;
+import com.challenge.wallet.domain.User;
+import com.challenge.wallet.domain.Wallet;
+import com.challenge.wallet.exceptions.NegativeAmountException;
+import com.challenge.wallet.exceptions.NotEnoughFundsException;
+import com.challenge.wallet.repositories.WalletRepository;
+import com.challenge.wallet.services.BalanceService;
+import com.challenge.wallet.services.UserService;
+import com.challenge.wallet.services.WalletService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

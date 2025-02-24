@@ -1,12 +1,11 @@
-package com.chalenge.wallet;
+package com.challenge.wallet;
 
-import com.chalenge.wallet.domain.Balance;
-import com.chalenge.wallet.dtos.BalanceDTO;
-import com.chalenge.wallet.dtos.UserDTO;
-import com.chalenge.wallet.dtos.WalletDTO;
-import com.chalenge.wallet.repositories.BalanceRepository;
-import com.chalenge.wallet.repositories.UserRepository;
-import com.chalenge.wallet.repositories.WalletRepository;
+import com.challenge.wallet.dtos.BalanceDTO;
+import com.challenge.wallet.dtos.UserDTO;
+import com.challenge.wallet.dtos.WalletDTO;
+import com.challenge.wallet.repositories.BalanceRepository;
+import com.challenge.wallet.repositories.UserRepository;
+import com.challenge.wallet.repositories.WalletRepository;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import org.junit.jupiter.api.AfterEach;

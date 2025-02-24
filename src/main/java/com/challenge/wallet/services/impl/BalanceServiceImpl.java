@@ -1,9 +1,9 @@
-package com.chalenge.wallet.services.impl;
+package com.challenge.wallet.services.impl;
 
-import com.chalenge.wallet.domain.Balance;
-import com.chalenge.wallet.domain.Wallet;
-import com.chalenge.wallet.repositories.BalanceRepository;
-import com.chalenge.wallet.services.BalanceService;
+import com.challenge.wallet.domain.Balance;
+import com.challenge.wallet.domain.Wallet;
+import com.challenge.wallet.repositories.BalanceRepository;
+import com.challenge.wallet.services.BalanceService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,8 +1,8 @@
-package com.chalenge.wallet.services.impl;
+package com.challenge.wallet.services.impl;
 
-import com.chalenge.wallet.domain.User;
-import com.chalenge.wallet.repositories.UserRepository;
-import com.chalenge.wallet.services.UserService;
+import com.challenge.wallet.domain.User;
+import com.challenge.wallet.repositories.UserRepository;
+import com.challenge.wallet.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

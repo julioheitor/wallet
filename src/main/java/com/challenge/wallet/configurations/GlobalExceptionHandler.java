@@ -1,14 +1,13 @@
-package com.chalenge.wallet.configurations;
+package com.challenge.wallet.configurations;
 
-import com.chalenge.wallet.dtos.ErrorDTO;
-import com.chalenge.wallet.exceptions.NegativeAmountException;
-import com.chalenge.wallet.exceptions.NotEnoughFundsException;
+import com.challenge.wallet.dtos.ErrorDTO;
+import com.challenge.wallet.exceptions.NegativeAmountException;
+import com.challenge.wallet.exceptions.NotEnoughFundsException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 

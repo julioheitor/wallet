@@ -1,4 +1,4 @@
-package com.chalenge.wallet.dtos;
+package com.challenge.wallet.dtos;
 
 import lombok.Data;
 

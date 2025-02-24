@@ -1,6 +1,6 @@
-package com.chalenge.wallet.services;
+package com.challenge.wallet.services;
 
-import com.chalenge.wallet.domain.User;
+import com.challenge.wallet.domain.User;
 import org.springframework.stereotype.Service;
 
 @Service
