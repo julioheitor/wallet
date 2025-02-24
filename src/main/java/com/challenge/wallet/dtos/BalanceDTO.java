@@ -1,4 +1,11 @@
 package com.challenge.wallet.dtos;
 
-public record BalanceDTO (Long id, Double funds, String date){
+import lombok.Data;
+
+@Data
+public class BalanceDTO {
+
+    private Long id;
+    private Double funds;
+    private String date;
 }

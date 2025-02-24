@@ -4,6 +4,7 @@ import com.challenge.wallet.domain.Balance;
 import com.challenge.wallet.domain.User;
 import com.challenge.wallet.domain.Wallet;
 import com.challenge.wallet.exceptions.NegativeAmountException;
+import com.challenge.wallet.exceptions.NoBalanceFoundException;
 import com.challenge.wallet.exceptions.NotEnoughFundsException;
 import com.challenge.wallet.repositories.WalletRepository;
 import com.challenge.wallet.services.BalanceService;
@@ -62,7 +63,7 @@ public class WalletServiceImpl implements WalletService {
         Balance balance = balanceService.findByDateAndWallet(walletId, d);
 
         if(balance == null){
-            throw new Exception("No balance found on this wallet and date.");
+            throw new NoBalanceFoundException("WalletId: " + walletId + " date: " + date);
         }
 
         return balanceService.findByDateAndWallet(walletId, d);
@@ -75,7 +76,7 @@ public class WalletServiceImpl implements WalletService {
         logger.info("Deposit operation. WalletId: " + walletId + " amount: " + amount);
 
         if(amount <= 0){
-            throw new IllegalArgumentException("Please, provide a valid amount: " + amount);
+            throw new NegativeAmountException("WalletId: " + walletId + " amount: " + amount);
         }
 
         Wallet wallet = walletRepository.findById(walletId).orElseThrow(() -> new Exception("Wallet not found."));
@@ -94,13 +95,13 @@ public class WalletServiceImpl implements WalletService {
         logger.info("Withdraw operation. WalletId: " + walletId + " amount: " + amount);
 
         if(amount <= 0){
-            throw new NegativeAmountException();
+            throw new NegativeAmountException("WalletId: " + walletId + " amount: " + amount);
         }
 
         Wallet wallet = walletRepository.findById(walletId).orElseThrow(() -> new Exception("Wallet not found."));
 
         if(wallet.getFunds() < amount){
-            throw new NotEnoughFundsException();
+            throw new NotEnoughFundsException("WalletId: " + walletId + " amount: " + amount);
         }
 
         wallet.setFunds(wallet.getFunds() - amount);
@@ -123,7 +124,7 @@ public class WalletServiceImpl implements WalletService {
         logger.info("Tranfer operation. OriginWalletId: " + originWalletId + ". TargerWalletId: " + targetWalletId + ". amount: " + amount);
 
         if(amount <= 0){
-            throw new NegativeAmountException();
+            throw new NegativeAmountException("Amount: " + amount);
         }
 
         Wallet originWallet = walletRepository.findById(originWalletId).
@@ -133,7 +134,7 @@ public class WalletServiceImpl implements WalletService {
                 orElseThrow(() -> new Exception("Wallet not found: " + targetWalletId));
 
         if(originWallet.getFunds() < amount){
-            throw new NotEnoughFundsException();
+            throw new NotEnoughFundsException("WalletId: " + originWallet + " funds: " + originWallet.getFunds());
         }
 
         originWallet.setFunds(originWallet.getFunds() - amount);

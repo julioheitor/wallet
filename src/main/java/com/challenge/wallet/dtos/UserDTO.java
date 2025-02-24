@@ -1,4 +1,10 @@
 package com.challenge.wallet.dtos;
 
-public record UserDTO (Long id, String name){
+import lombok.Data;
+
+@Data
+public class UserDTO {
+
+    private Long id;
+    private String name;
 }

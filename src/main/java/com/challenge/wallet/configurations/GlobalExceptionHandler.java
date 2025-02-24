@@ -2,6 +2,7 @@ package com.challenge.wallet.configurations;
 
 import com.challenge.wallet.dtos.ErrorDTO;
 import com.challenge.wallet.exceptions.NegativeAmountException;
+import com.challenge.wallet.exceptions.NoBalanceFoundException;
 import com.challenge.wallet.exceptions.NotEnoughFundsException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
@@ -25,7 +26,7 @@ public class GlobalExceptionHandler {
                 HttpStatus.BAD_REQUEST.value(),
                 ex.getMessage(),
                 LocalDateTime.now(),
-                req.getServletPath()
+                req.getRequestURI()
         );
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
@@ -37,7 +38,19 @@ public class GlobalExceptionHandler {
                 HttpStatus.BAD_REQUEST.value(),
                 ex.getMessage(),
                 LocalDateTime.now(),
-                req.getServletPath()
+                req.getRequestURI()
+        );
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler({NoBalanceFoundException.class})
+    public ResponseEntity<ErrorDTO> handleNoBalanceFoundExceptions(HttpServletRequest req, NoBalanceFoundException ex) {
+        logger.error("No balance found on this wallet and date: {}", ex.getMessage());
+        ErrorDTO error = new ErrorDTO(
+                HttpStatus.BAD_REQUEST.value(),
+                ex.getMessage(),
+                LocalDateTime.now(),
+                req.getRequestURI()
         );
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
@@ -50,7 +63,7 @@ public class GlobalExceptionHandler {
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
                 ex.getMessage(),
                 LocalDateTime.now(),
-                req.getServletPath()
+                req.getRequestURI()
         );
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
