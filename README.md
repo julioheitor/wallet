@@ -4,7 +4,7 @@ This project was built using the **Java** language and **Spring Boot framework**
 support the requirements and provides a **REST** API interface to provide the wallet service.
 
 The architecture has the REST layer containing the controller wallet class, the service layer that has all the
-business logic of the application, and the repository layer containing the SQL queries to be executed on the **Postgres** database. Particularly in the
+business logic of the application, and the repository layer containing the SQL queries to be executed on the **H2** internal database. Particularly in the
 repository layer, it was used the **Spring-Data** framework that manages all the stuff related to connection management and transactions management.
 
 Below it can be seen a diagram of the main concepts involved.
