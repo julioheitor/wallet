@@ -17,9 +17,7 @@ Some considerations were adopted to guarantee the well function of the applicati
    To guarantee the correctness of the data, if any step of the operations fails, all the operation will be undone using the
    **@Transaction** annotation.
 
-2) Considering the current balance operation is executed often, I have put the current fund of the wallet in the wallet
-   itself to avoid to do a join SQL operation with the Balance history on each query. But the current funds were also put
-   in the balance history to be present in aggregated reports.
+2) If the amount to be transferred to another wallet is greater than the wallet funds and error will be thrown;
 
 3) If negative amounts were sent to the service, an error will be returned indicating the reason.
 
@@ -41,7 +39,7 @@ If you want to execute the tests before installing the application, run the foll
 mvn test
 ```
 
-The test class [WalletApplicationTests.java](src/test/java/com/chalenge/wallet/WalletApplicationTests.java) uses the **MocMvc** class to test the web layer only and can
+The test class [WalletApplicationTests.java](src/test/java/com/challenge/wallet/WalletApplicationTests.java) uses the **MocMvc** class to test the web layer only and can
 also be executed manually using an IDE.
 
 I have spent almost **7 bours** in total to design and implement the application.

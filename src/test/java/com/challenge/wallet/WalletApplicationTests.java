@@ -69,7 +69,7 @@ class WalletApplicationTests {
 
 		originWallet = testWithdrawOperation(originWallet, 50d, status().isOk(), (wallet) -> wallet.getFunds() == 50d);
 
-		testTransferOperation(originWallet, targetWallet, 50d, status().isOk(), (wallets) ->
+		testSuccessfulTransferOperation(originWallet, targetWallet, 50d, (wallets) ->
 				wallets.get(0).getFunds() == 0d && wallets.get(1).getFunds() == 50d);
 
 		/**
@@ -83,7 +83,7 @@ class WalletApplicationTests {
 
 		testWithdrawOperation(originWallet, 9999999d, status().isBadRequest(), (wallet) -> true);
 
-		testTransferOperation(originWallet, targetWallet, -50d, status().isBadRequest(), (wallets) -> true);
+		testUnsuccessfulTransferOperation(originWallet, targetWallet, -50d);
 
 	}
 
@@ -160,7 +160,7 @@ class WalletApplicationTests {
 		return wallet;
 	}
 
-	private void testTransferOperation(WalletDTO originWallet, WalletDTO targetWallet, Double amount, ResultMatcher matcher,
+	private void testSuccessfulTransferOperation(WalletDTO originWallet, WalletDTO targetWallet, Double amount,
 									   Function<List<WalletDTO>, Boolean> assertion) throws Exception {
 
 		List<WalletDTO> wallets = gson.fromJson(mockMvc.perform(MockMvcRequestBuilders.put("/wallet/transfer")
@@ -169,9 +169,19 @@ class WalletApplicationTests {
 						.param("amount", String.valueOf(amount))
 						.contentType(MediaType.APPLICATION_JSON)
 						.accept(MediaType.ALL_VALUE))
-				.andExpect(matcher)
+				.andExpect(status().isOk())
 				.andReturn().getResponse().getContentAsString(), new TypeToken<ArrayList<WalletDTO>>(){}.getType());
 
 		Assertions.assertTrue(assertion.apply(wallets));
+	}
+
+	private void testUnsuccessfulTransferOperation(WalletDTO originWallet, WalletDTO targetWallet, Double amount) throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.put("/wallet/transfer")
+						.param("originWalletId", String.valueOf(originWallet.getId()))
+						.param("targetWalletId", String.valueOf(targetWallet.getId()))
+						.param("amount", String.valueOf(amount))
+						.contentType(MediaType.APPLICATION_JSON)
+						.accept(MediaType.ALL_VALUE))
+				.andExpect(status().isBadRequest());
 	}
 }
